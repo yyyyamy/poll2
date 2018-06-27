@@ -25,6 +25,7 @@ public class OptionsServiceImpl implements IOptionsService {
 	@Override
 	public List<Options> query(String keywords) throws Exception {
 		OptionsExample example = new OptionsExample();
+		example.createCriteria().andLabelLike(keywords);
 		return optionsMapper.selectByExample(example);
 	}
 
