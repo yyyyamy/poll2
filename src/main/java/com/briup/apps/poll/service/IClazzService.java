@@ -7,6 +7,11 @@ import com.briup.apps.poll.bean.extend.ClazzVM;
 
 public interface IClazzService {
 	List<Clazz> findAll() throws Exception;
-	
-	List<ClazzVM> findAllClazzVM() throws Exception;
+	List<Clazz> query(String keywords)throws Exception;
+	void save (Clazz clazz)throws Exception;
+	void deleteById(long id)throws Exception;
+	void update(Clazz clazz)throws Exception;
+	void batchDelete(List<Long> ids) throws Exception;
+	List<ClazzVM> findAllClazzVM()throws Exception;
+
 }
