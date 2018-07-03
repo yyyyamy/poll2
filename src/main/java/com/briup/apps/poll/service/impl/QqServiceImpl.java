@@ -9,13 +9,14 @@ import com.briup.apps.poll.bean.Qq;
 import com.briup.apps.poll.bean.QqExample;
 import com.briup.apps.poll.bean.extend.QqVM;
 import com.briup.apps.poll.dao.QqMapper;
+import com.briup.apps.poll.dao.extend.QqVMMapper;
 import com.briup.apps.poll.service.IQqService;
 @Service
 public class QqServiceImpl implements IQqService{
 @Autowired
 private QqMapper qqMapper;
 @Autowired
-private QqMapper qqVMMapper;
+private QqVMMapper qqVMMapper;
 	@Override
 	public List<Qq> findAll() throws Exception {
 		QqExample example=new QqExample();
