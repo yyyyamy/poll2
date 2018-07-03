@@ -11,4 +11,5 @@ void save (Course course)throws Exception;
 void deleteById(long id)throws Exception;
 void update(Course course)throws Exception;
 void batchDelete(List<Long> ids) throws Exception; 
+void saveOrUpdate(Course course)throws Exception;
 }

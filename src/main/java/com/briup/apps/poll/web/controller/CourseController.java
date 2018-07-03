@@ -1,7 +1,6 @@
 package com.briup.apps.poll.web.controller;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,28 +13,26 @@ import com.briup.apps.poll.bean.Course;
 import com.briup.apps.poll.service.ICourseService;
 import com.briup.apps.poll.util.MsgResponse;
 
-import io.swagger.annotations.Api;
-@Api(description="课程相关接口")
 @RestController
 @RequestMapping("/course")
 public class CourseController {
 @Autowired
 private ICourseService courseService;
 
-@PostMapping("batchDelete")
-public MsgResponse batchDelete(long[] ids){
+@GetMapping("batchDelete")
+public MsgResponse batchDelete(Long[] ids){
 	try {
-		List<Long> idList = new ArrayList<>();
-		for(long id : ids){
+		List<Long> idList=new ArrayList<>();
+		for(long id:ids){
 			idList.add(id);
 		}
 		courseService.batchDelete(idList);
-		return MsgResponse.success("批量删除成功", null);
+		return MsgResponse.success("批量删除成功！", null);
 	} catch (Exception e) {
 		// TODO: handle exception
-		e.printStackTrace();
-		return MsgResponse.error(e.getMessage());
 	}
+	return MsgResponse.error("删除失败！");
+	
 }
 
 @GetMapping("findAllCourse")
@@ -46,7 +43,62 @@ public MsgResponse findAllCourse(){
 	} catch (Exception e) {
 		return MsgResponse.error(e.getMessage());
 	}
+}
+@GetMapping("/save")
+public MsgResponse save(Course course){
+	try {
+		courseService.save(course);
+		return MsgResponse.success("保存成功！", course);
+	} catch (Exception e) {
+		e.printStackTrace();
+		return MsgResponse.error(e.getMessage());
+	}
 	
 }
+@PostMapping("saveOrUpdateCourse")
+public MsgResponse saveOrUpdateCourse(Course course){
+	try {
+		if(course!=null&&course.getId()!=null){
+			courseService.update(course);
+		}else{
+			courseService.save(course);
+			
+		}
+		return MsgResponse.success("保存或更新成功", null);
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+		return MsgResponse.error(e.getMessage());
+	}
+	
+}
+@GetMapping("deleteById")
+public MsgResponse deleteById(long id){
+	try {
+		courseService.deleteById(id);
+		return MsgResponse.success("删除成功！", null);
+	} catch (Exception e) {
+		return MsgResponse.error("删除失败！");
+	}
+	
+}
+@GetMapping("update")
+public MsgResponse update(Course course){
+	try {
+		courseService.update(course);
+		return  MsgResponse.success("更新成功！", course);	
+	} catch (Exception e) {
+		return MsgResponse.error("更新失败！");
+	}
+	
+}
+@GetMapping("query")
+public MsgResponse query(String keywords) throws Exception{
+	List<Course> query=courseService.query(keywords);
+	return MsgResponse.success("询问成功！", query);
+	
+}
+
+
 
 }

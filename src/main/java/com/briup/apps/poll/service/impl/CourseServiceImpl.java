@@ -25,13 +25,13 @@ private CourseMapper courseMapper;
 		CourseExample example =new CourseExample();
 		// TODO Auto-generated method stub
 		example.createCriteria().andNameLike(keywords);
-		return courseMapper.selectByExampleWithBLOBs(example);
+		return courseMapper.selectByExample(example);
 	}
 
 	@Override
 	public void save(Course course) throws Exception {
 		// TODO Auto-generated method stub
-		
+		courseMapper.insert(course);
 	}
 
 	@Override
@@ -45,6 +45,7 @@ private CourseMapper courseMapper;
 		// TODO Auto-generated method stub
 		courseMapper.updateByPrimaryKey(course);
 	}
+	
 	@Override
 	public void batchDelete(List<Long> ids) throws Exception {
 		// TODO Auto-generated method stub
@@ -52,5 +53,11 @@ private CourseMapper courseMapper;
 			courseMapper.deleteByPrimaryKey(id);
 		}
 	}
-
+	@Override
+	public void saveOrUpdate(Course course) throws Exception {
+		
+		
+	}
+	
+	
 }
