@@ -7,6 +7,7 @@ import com.briup.apps.poll.bean.extend.QuestionVM;
 
 public interface IQuestionService {
 	List<Question> findAll() throws Exception;
-	
 	List<QuestionVM> findAllQuestionVM() throws Exception;
+	void saveorUpdate(QuestionVM question) throws Exception;
+
 }
