@@ -117,4 +117,6 @@ public interface SchoolMapper {
      * @mbg.generated Mon Jun 25 17:14:39 CST 2018
      */
     int updateByPrimaryKey(School record);
+
+	School findById(long id);
 }

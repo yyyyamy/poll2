@@ -13,8 +13,11 @@ import com.briup.apps.poll.bean.Course;
 import com.briup.apps.poll.service.ICourseService;
 import com.briup.apps.poll.util.MsgResponse;
 
+import io.swagger.annotations.Api;
+
 @RestController
 @RequestMapping("/course")
+@Api(description = "课程的相应接口")
 public class CourseController {
 @Autowired
 private ICourseService courseService;

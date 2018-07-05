@@ -63,7 +63,7 @@ public class UserController {
 	public MsgResponse findAllUser() {
 		try {
 			List<User> list = userService.findAll();
-			return MsgResponse.success("success", list);
+			return MsgResponse.success("success++++++++++++++++++++++++++++++", list);
 
 		} catch (Exception e) {
 			// TODO: handle exception
